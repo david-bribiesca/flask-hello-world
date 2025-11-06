@@ -31,9 +31,9 @@ def insert_sensor_value(sensor_id):
         conn = get_connection()
         cur = conn.cursor()
 
-        # Insert into sensores table
+        # Insert into sensors table
         cur.execute(
-            "INSERT INTO sensores (sensor_id, value) VALUES (%s, %s)",
+            "INSERT INTO sensors (sensor_id, value) VALUES (%s, %s)",
             (sensor_id, value)
         )
         conn.commit()
@@ -46,9 +46,6 @@ def insert_sensor_value(sensor_id):
 
     except psycopg2.Error as e:
         return jsonify({"error": str(e)}), 500
-
-    except Exception as e:
-        return jsonify({"error": f"Failed to connect: {e}"}), 500
 
     finally:
         if 'conn' in locals():
