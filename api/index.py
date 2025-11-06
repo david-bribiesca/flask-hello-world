@@ -44,12 +44,15 @@ def insert_sensor_value(sensor_id):
             "value": value
         }), 201
 
+    except psycopg2.Error as e:
+        return jsonify({"error": str(e)}), 500
+
+    except Exception as e:
+        return jsonify({"error": f"Failed to connect: {e}"}), 500
+
     finally:
         if 'conn' in locals():
             conn.close()
-    
-    except Exception as e:
-        return f"Failed to connect: {e}"
 
 if __name__ == "__main__":
     app.run(debug=True)
