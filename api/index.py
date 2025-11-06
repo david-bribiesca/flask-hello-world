@@ -31,9 +31,9 @@ def insert_sensor_value(sensor_id):
         conn = get_connection()
         cur = conn.cursor()
 
-        # Insert into sensors table
+        # Insert into sensores table
         cur.execute(
-            "INSERT INTO sensors (sensor_id, value) VALUES (%s, %s)",
+            "INSERT INTO sensores (sensor_id, value) VALUES (%s, %s)",
             (sensor_id, value)
         )
         conn.commit()
