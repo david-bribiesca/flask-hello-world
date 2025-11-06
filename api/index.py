@@ -44,9 +44,6 @@ def insert_sensor_value(sensor_id):
             "value": value
         }), 201
 
-    except psycopg2.Error as e:
-        return jsonify({"error": str(e)}), 500
-
     finally:
         if 'conn' in locals():
             conn.close()
